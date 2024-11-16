@@ -1,0 +1,202 @@
+:root{
+    --heading: 'Karla', sans-serif;
+    --text: "Inter", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1C1C1C;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    background: #1F2937;
+    height: 70vh;
+    width: 40vw;
+    border: 5px solid white;
+    border-radius: 10px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+h1 {
+    font-family: var(--heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    text-align: left;
+    margin: 2rem;
+}
+
+span {
+    color: #4ADF86;
+}
+
+p {
+    font-family: var(--text);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #D5D4D8;
+    text-align: left;
+    margin: 2rem;
+}
+
+.btn {
+    background: #10B981;
+    color: #ffffff;
+    font-family: var(--text);
+    font-size: 16px;
+    width: 180px;;
+    padding: 10px 0;
+    margin: 2rem;
+    border: none;
+    border-radius: 5px;
+    text-shadow: 0 0 1px white;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: #059669;
+}
+
+label{
+    font-family: var(--text);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #D5D4D8;
+    text-align: left;
+    margin: 0 1rem 0 4rem;
+}
+
+.select {
+    font-family: var(--text);
+    font-size: 14px;
+    background: #273549;
+    color: #55F991;
+    border: none;
+    border-radius: 5px;
+    /* width: 180px; */
+    padding: 5px 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.line {
+    width: 36vw;
+    color: #2F3E53;
+    border: 1px solid #2F3E53;
+}
+
+
+.input-pass {
+    font-family: var(--text);
+    font-size: 16px;
+    background: #273549;
+    color: #55F991;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    padding: 10px 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#passOne {
+    margin: 2.5rem 2rem;
+}
+
+#passTwo {
+    margin: 2.5rem 1rem;
+}
+
+.input-pass:focus {
+    outline: none;
+}
+
+.popup {
+    position: relative;
+    display: flex;
+}
+  
+/* The actual popup */
+.popup .popuptext1 {
+    font-family: var(--text);
+    font-size: 12px;
+    visibility: hidden;
+    width: 100px;
+    background-color: #1F2937;
+    color: #55F991;
+    text-align: center;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: calc(50% + 26px);
+    left: calc(50% - 110px);
+    margin-left: -80px;
+}
+
+.popup .popuptext2 {
+    font-family: var(--text);
+    font-size: 12px;
+    visibility: hidden;
+    width: 100px;
+    background-color: #1F2937;
+    color: #55F991;
+    text-align: center;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: calc(50% + 26px);
+    left: calc(50% + 195px);
+    margin-left: -80px;
+}
+  
+/* Popup arrow */
+.popup .popuptext1::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #374151 transparent transparent transparent;
+}
+
+.popup .popuptext2::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #374151 transparent transparent transparent;
+}
+  
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+  
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
