@@ -138,7 +138,7 @@ label{
     position: absolute;
     z-index: 1;
     bottom: calc(50% + 26px);
-    left: calc(50% - 110px);
+    left: calc(50% - 115px);
     margin-left: -80px;
 }
 
@@ -156,7 +156,7 @@ label{
     position: absolute;
     z-index: 1;
     bottom: calc(50% + 26px);
-    left: calc(50% + 195px);
+    left: calc(50% + 185px);
     margin-left: -80px;
 }
   
@@ -189,6 +189,12 @@ label{
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
 }
+
+.popup .hide {
+    visibility: visible;
+    -webkit-animation: fadeOut 1s;
+    animation: fadeOut 1s;
+}
   
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
@@ -199,4 +205,14 @@ label{
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+@-webkit-keyframes fadeOut {
+    from {opacity: 1;} 
+    to {opacity: 0;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
