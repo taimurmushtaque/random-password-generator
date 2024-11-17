@@ -3,8 +3,6 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O",
 
 let passOne = document.getElementById("passOne")
 let passTwo = document.getElementById("passTwo")
-let selectValue = document.getElementById("password-length").value
-console.log(selectValue.value)
 
 getRandomPassword = () => {
     let randomOne = Math.floor(Math.random() * characters.length)
@@ -13,82 +11,46 @@ getRandomPassword = () => {
 }
 
 const generatePassword = () => {
-  let value = document.getElementById("password-length").value
-  let password1 = ""
-  let password2 = ""
-  if (value == selectValue) {
-    for (let i = 0; i < value; i++) {
-      password1 += getRandomPassword()[0]
-      password2 += getRandomPassword()[1]
-    }
-    passOne.value = password1
-    passTwo.value = password2
-  } else {
-    for (let i = 0; i < value; i++) {
-      password1 += getRandomPassword()[0]
-      password2 += getRandomPassword()[1]
-    }
-    passOne.value = password1
-    passTwo.value = password2
-  }
+  const value = document.getElementById("password-length").value;
+  const password1 = Array.from({ length: value }, () => getRandomPassword()[0]).join("");
+  const password2 = Array.from({ length: value }, () => getRandomPassword()[1]).join("");
+
+  passOne.value = password1;
+  passTwo.value = password2;
 }
 
-passOne.addEventListener("mouseenter", (e) => {
-    e.target.removeAttribute('disabled');
-})
+passOne.addEventListener('mouseenter', () => passOne.removeAttribute('disabled'));
+passOne.addEventListener('mouseleave', () => passOne.setAttribute('disabled', true));
 
-passOne.addEventListener("mouseleave", (e) => {
-    e.target.setAttribute('disabled', true);
-})
+passTwo.addEventListener('mouseenter', () => passTwo.removeAttribute('disabled'));
+passTwo.addEventListener('mouseleave', () => passTwo.setAttribute('disabled', true));
 
-passTwo.addEventListener("mouseenter", (e) => {
-  e.target.removeAttribute('disabled');
-})
-
-passTwo.addEventListener("mouseleave", (e) => {
-    e.target.setAttribute('disabled', true);
-})
-
-function myPopUp1() {
-  var passOne = document.getElementById("passOne");
-  var popup1 = document.getElementById("myPopup1");
-  navigator.clipboard.writeText(passOne.value)
+function copyToClipboard(inputId, popupId, hidePopupFunction) {
+  const input = document.getElementById(inputId);
+  const popup = document.getElementById(popupId);
+  navigator.clipboard.writeText(input.value)
     .then(() => {
-      popup1.classList.toggle("show");
-      setTimeout(hidePopup1, 2000);
+      popup.classList.toggle("show");
+      setTimeout(hidePopupFunction, 2000);
     })
     .catch((error) => {
       console.error("Failed to copy: ", error);
     });
+}
+
+function hidePopup(popupId) {
+  const popup = document.getElementById(popupId);
+  popup.classList.remove("show");
+  popup.classList.add("hide");
+  setTimeout(() => {
+    popup.classList.remove("hide");
+  }, 500);
+}
+
+function myPopUp1() {
+  copyToClipboard("passOne", "myPopup1", () => hidePopup("myPopup1"));
 }
 
 function myPopUp2() {
-  var passTwo = document.getElementById("passTwo");
-  var popup2 = document.getElementById("myPopup2");
-  navigator.clipboard.writeText(passTwo.value)
-    .then(() => {
-      popup2.classList.toggle("show");
-      setTimeout(hidePopup2, 2000);
-    })
-    .catch((error) => {
-      console.error("Failed to copy: ", error);
-    });
-}
-
-function hidePopup1() {
-  var popup = document.getElementById("myPopup1");
-  popup.classList.remove("show");
-  popup.classList.add("hide");
-  setTimeout(() => {
-    popup.classList.remove("hide");
-  }, 500);
-}
-
-function hidePopup2() {
-  var popup = document.getElementById("myPopup2");
-  popup.classList.remove("show");
-  popup.classList.add("hide");
-  setTimeout(() => {
-    popup.classList.remove("hide");
-  }, 500);
+  copyToClipboard("passTwo", "myPopup2", () => hidePopup("myPopup2"));
 }
